@@ -65,7 +65,14 @@ function obstacle(x)
 
 let ob = new obstacles();
 
-const population = new Population(1000,0.1);
+const population = new Population(200,0.1);
+let agent = new Bird(ob,"1");
+function bestRun(object){
+newBird = new Bird(ob,"1");
+   agent = newBird;
+agent.brain.setWeights(object.weights);
+
+}
 
 
 function update()
@@ -74,7 +81,9 @@ function update()
   
     
     ob.posCheck();
+    
     population.update();
+   agent.draw();
 
     requestAnimationFrame(update);
 }
@@ -85,7 +94,7 @@ update();
 
 document.addEventListener('keydown', function(event) {
     if(event.keyCode == 32) {
-        agent.player.jump();
+        
     }
     
 });
@@ -94,3 +103,7 @@ document.addEventListener('keydown', function(event) {
 function randomInt(min, max) { // min and max included 
     return Math.floor(Math.random() * (max - min + 1) + min)
   }
+
+
+
+
